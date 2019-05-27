@@ -1,8 +1,8 @@
 /*
 * @Author: lorenzo
 * @Date:   2018-10-10 11:32:49
-* @Last Modified by:   Lorenzo
-* @Last Modified time: 2018-12-06 17:24:22
+* @Last Modified by:   l.rizzello
+* @Last Modified time: 2019-04-19 14:41:08
 */
 
 #include "platform.h"
@@ -86,6 +86,7 @@ C_NATIVE(_bt81x_init) {
     Gpu_Hal_Sleep(300);
 
     /* read Register ID to check if FT800 is ready */
+    Gpu_Hal_Wr16(phost, REG_GPIOX, 0xffff); // set IO output current configuration before reading chipid
     chipid = Gpu_Hal_Rd8(phost, REG_ID);
     while(chipid != 0x7C)
       {
@@ -111,7 +112,6 @@ C_NATIVE(_bt81x_init) {
 
     /* GPIO configuration */
     Gpu_Hal_Wr16(phost, REG_GPIOX_DIR, 0xffff);
-    Gpu_Hal_Wr16(phost, REG_GPIOX, 0xffff);
 
     Gpu_ClearScreen(phost);
 
@@ -349,6 +349,7 @@ C_NATIVE(_bt81x_bitmap_draw) {
     return ERR_OK;   
 }
 
+C_NATIVE_SIMPLE_WRAP(_bt81x_calibrate, Gpu_CoCmd_Calibrate(phost,0))
 C_NATIVE_SIMPLE_WRAP(_bt81x_end, Gpu_Hal_WrCmd32(phost, END()))
 
 C_NATIVE_SIMPLE_WRAP(_bt81x_flash_status, *res = PSMALLINT_NEW(Gpu_Hal_Rd8(phost, REG_FLASH_STATUS)))

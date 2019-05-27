@@ -45,7 +45,7 @@ txt = bt81x.Text(0, 0, 31, bt81x.OPT_CENTERX | bt81x.OPT_CENTERY, "", palette=pa
 streams.serial() # open serial channel to display debug messages
 
 print('> Init chip')
-bt81x.init(SPI0, D4, D5, D34)
+bt81x.init(SPI0, D4, D33, D34)
 bt81x.touch_loop(((-1, widget_choice_cbk), )) # listen to touch events and make widget_choice_cbk process them
 
 def widget_selection():
@@ -70,6 +70,11 @@ def widget_selection():
 
     widget_choice_evt.wait()
     widget_choice_evt.clear()
+
+# uncomment these lines to calibrate resistive displays
+# bt81x.dl_start()
+# bt81x.calibrate()
+# bt81x.swap_and_empty()
 
 while True:
     widget_selection()

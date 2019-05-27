@@ -43,7 +43,12 @@ def pressed(tag, tracked, tp):
     print("PRESSED!", tag)
     draw_networks(networks, pressed=tag-1)
 
-bt81x.init(SPI0, D4, D5, D34)
+bt81x.init(SPI0, D4, D33, D34)
+
+# uncomment these lines to calibrate resistive displays
+# bt81x.dl_start()
+# bt81x.calibrate()
+# bt81x.swap_and_empty()
 
 wifi_sec=("Open","WEP","WPA","WPA2")
 print("> scanning")

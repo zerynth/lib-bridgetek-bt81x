@@ -18,7 +18,7 @@ layout = (bt81x.ARGB1555, linestride) # choose this layout for zerynth_logo.bin
 zerynth_logo = bt81x.Bitmap(1, 0, layout,
                     (bt81x.BILINEAR, bt81x.BORDER, bt81x.BORDER, LOGO_W, LOGO_H))
 
-bt81x.init(SPI0, D4, D5, D34)
+bt81x.init(SPI0, D4, D33, D34)
 
 bt81x.inflate(0, 'zerynth_logo.bin')
 # bt81x.load_image(0, 0, 'zerynth_logo.png')

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # @Author: lorenzo
 # @Date:   2018-10-09 12:12:08
-# @Last Modified by:   Lorenzo
-# @Last Modified time: 2018-12-10 14:58:38
+# @Last Modified by:   l.rizzello
+# @Last Modified time: 2019-03-20 11:19:33
 
 """
 .. module:: bt81x
@@ -438,6 +438,16 @@ def spinner(x, y, style, scale):
     """
     pass
 
+@native_c("_bt81x_calibrate", [])
+def calibrate():
+    """
+.. function:: calibrate()
+
+    Starts the calibration procedure (needed by Resistive Displays).
+    """
+    pass
+
+
 @native_c("_bt81x_inflate_start", [])
 def _inflate_start(ram_ptr):
     pass
@@ -745,4 +755,3 @@ def flash_detach():
 @native_c("_bt81x_flash_size", [])
 def flash_size():
     pass
-
