@@ -1,0 +1,13 @@
+---
+description: Bridgetek BT81x support
+fullname: lib.bridgetek.bt81x
+info:
+    chip_manufacturer: bridgetek
+    chip_name: BT81x
+    name: Zerynth Bridgetek BT81x Library
+    type: graphics
+keywords:
+- bridgetek
+- graphics
+title: Bridgetek BT81x Library
+...
